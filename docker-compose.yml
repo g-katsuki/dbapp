@@ -3,12 +3,9 @@ version: '3'
 services:
   mysql:
     image: mysql:8.0
-    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: dbappDB
-    networks:
-      - network1
     ports:
       - "3306:3306"
     volumes:
@@ -29,11 +26,6 @@ services:
       DB_USER: root
       DB_PASSWORD: root_password
       DB_DATABASE: dbappDB
-    networks:
-      - network1
 
 volumes:
   mysql-data:
-
-networks:
-  network1:

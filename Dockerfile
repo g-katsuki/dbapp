@@ -16,17 +16,5 @@ RUN apt-get update && apt-get install -y default-mysql-client
 # アプリケーションのポートを公開
 EXPOSE 8084
 
-## 環境変数を設定してMySQLとの接続情報を指定
-## MySQLコンテナの名前を指定
-#ENV DB_HOST=my-mysql-container
-## MySQLのデフォルトポート
-#ENV DB_PORT=3306
-## MySQLユーザー名
-#ENV DB_USER=root
-## MySQLパスワード
-#ENV DB_PASSWORD=root_password
-## データベース名
-#ENV DB_DATABASE=dbappDB
-
 # アプリケーションを実行
 CMD ["java", "-jar", "/app/dbapp.jar"]
