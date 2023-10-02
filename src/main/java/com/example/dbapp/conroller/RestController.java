@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.dbapp.model.*;
 import com.example.dbapp.mapper.*;
 
+import java.util.List;
+
 @org.springframework.web.bind.annotation.RestController
 @MapperScan(basePackages = {"com.example.dbapp"})
 public class RestController {
@@ -35,13 +37,17 @@ public class RestController {
         return model;
     }
 
-    @RequestMapping("/map")
-    public String map(){
+    @RequestMapping("/product")
+    public ModelAndView product(){
         System.out.println("before DB");
-        Product product = productMapper.selectByPrimaryKey(2);
+        ProductExample ex = null;
+        List<Product> products = productMapper.selectByExample(ex);
         System.out.println("After DB");
-        System.out.println("Name :" + product.getName());
-        return product.getName();
+        System.out.println("Name :" + products.size());
+
+        ModelAndView model = new ModelAndView("product");
+        model.addObject("products", products);
+        return model;
     }
 
 }
