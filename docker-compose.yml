@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: dbappDB
+    networks:
+      - network1
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/db/init.sql:/docker-entrypoint-initdb.d/init.sql  # 初期化スクリプトをマウント
+    container_name: my-mysql-container
+
+  java-app:
+    build:
+      context: .  # JavaアプリケーションのDockerfileがあるディレクトリへのパスを指定
+    ports:
+      - "8084:8084"
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: root_password
+      DB_DATABASE: dbappDB
+    networks:
+      - network1
+
+volumes:
+  mysql-data:
+
+networks:
+  network1:

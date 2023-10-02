@@ -21,11 +21,13 @@ public class RestController {
 
     @RequestMapping("/")
     public String test(){
-        return "test";
+        System.out.println("test");
+        return "test2";
     }
 
     @GetMapping(value = {"/index", ""})
     public ModelAndView index() {
+        System.out.println("index");
         a++;
         ModelAndView model = new ModelAndView("index");
         model.addObject("message", "ハローワールド!");
@@ -35,7 +37,10 @@ public class RestController {
 
     @RequestMapping("/map")
     public String map(){
+        System.out.println("before DB");
         Product product = productMapper.selectByPrimaryKey(2);
+        System.out.println("After DB");
+        System.out.println("Name :" + product.getName());
         return product.getName();
     }
 
