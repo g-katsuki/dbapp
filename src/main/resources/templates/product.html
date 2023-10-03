@@ -1,3 +1,55 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Product List</title>-->
+
+<!--    &lt;!&ndash; Bootstrap CSSのリンクを追加 &ndash;&gt;-->
+<!--    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h1 class="mt-5">Product List</h1>-->
+
+<!--    &lt;!&ndash; 新しい製品を追加するフォーム &ndash;&gt;-->
+<!--    <form action="/addProduct" method="post">-->
+<!--        <div class="form-group">-->
+<!--            <label for="productName">Product Name:</label>-->
+<!--            <input type="text" class="form-control" id="productName" name="productName" required>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="productCount">Product Count:</label>-->
+<!--            <input type="number" class="form-control" id="productCount" name="productCount" required>-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-success">Add Product</button>-->
+<!--    </form>-->
+
+<!--    <table class="table table-striped mt-3">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>ID</th>-->
+<!--            <th>Name</th>-->
+<!--            <th>Count</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        &lt;!&ndash; products リストの各要素を反復処理 &ndash;&gt;-->
+<!--        <tr th:each="product : ${products}">-->
+<!--            <td th:text="${product.id}"></td>-->
+<!--            <td th:text="${product.name}"></td>-->
+<!--            <td th:text="${product.count}"></td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+<!--<div class="container">-->
+<!--    <a href="/index" class="btn btn-primary mt-3">index</a>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
@@ -9,42 +61,65 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <h1 class="mt-5">Product List</h1>
+<div class="container-fluid">
+    <div class="row">
+        <!-- サイドバー -->
+        <nav class="col-md-1 bg-light">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/productList">一覧</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/addProduct">登録</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/searchProduct">検索</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/deleteProduct">削除</a>
+                </li>
+            </ul>
+        </nav>
 
-    <!-- 新しい製品を追加するフォーム -->
-    <form action="/addProduct" method="post">
-        <div class="form-group">
-            <label for="productName">Product Name:</label>
-            <input type="text" class="form-control" id="productName" name="productName" required>
-        </div>
-        <div class="form-group">
-            <label for="productCount">Product Count:</label>
-            <input type="number" class="form-control" id="productCount" name="productCount" required>
-        </div>
-        <button type="submit" class="btn btn-success">Add Product</button>
-    </form>
+        <!-- 間隔を追加 -->
+        <div class="col-md-1"></div>
 
-    <table class="table table-striped mt-3">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Count</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- products リストの各要素を反復処理 -->
-        <tr th:each="product : ${products}">
-            <td th:text="${product.id}"></td>
-            <td th:text="${product.name}"></td>
-            <td th:text="${product.count}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<div class="container">
-    <a href="/index" class="btn btn-primary mt-3">index</a>
+        <!-- コンテンツ -->
+        <div class="col-md-9">
+            <h1 class="mt-5">Product List</h1>
+
+            <!-- 新しい製品を追加するフォーム -->
+            <form action="/addProduct" method="post">
+                <div class="form-group">
+                    <label for="productName">Product Name:</label>
+                    <input type="text" class="form-control" id="productName" name="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productCount">Product Count:</label>
+                    <input type="number" class="form-control" id="productCount" name="productCount" required>
+                </div>
+                <button type="submit" class="btn btn-success">Add Product</button>
+            </form>
+
+            <table class="table table-striped mt-3">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Count</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- products リストの各要素を反復処理 -->
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.id}"></td>
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.count}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 </body>
 </html>
