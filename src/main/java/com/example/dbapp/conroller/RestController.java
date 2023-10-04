@@ -1,12 +1,8 @@
 package com.example.dbapp.conroller;
 
 import org.mybatis.spring.annotation.MapperScan;
-import org.mybatis.spring.annotation.MapperScans;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import com.example.dbapp.model.*;
 import com.example.dbapp.mapper.*;
@@ -39,15 +35,25 @@ public class RestController {
 
     @RequestMapping("/product")
     public ModelAndView product(){
-        System.out.println("before DB");
         ProductExample ex = null;
         List<Product> products = productMapper.selectByExample(ex);
-        System.out.println("After DB");
-        System.out.println("Name :" + products.size());
-
         ModelAndView model = new ModelAndView("product");
         model.addObject("products", products);
         return model;
+    }
+
+    // 登録後リダイレクトのでRequestMappingにする必要があったPostでもできるかはわからない
+    @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
+    public ModelAndView addProduct(@ModelAttribute Product product){
+        Product tmp_product = new Product();
+        tmp_product.setName(product.getName());
+        tmp_product.setCount(product.getCount());
+        int i = productMapper.insert(tmp_product);
+
+        // リダイレクト先のURLを指定してModelAndViewを作成
+        ModelAndView modelAndView = new ModelAndView("redirect:/product");
+
+        return modelAndView;
     }
 
 }

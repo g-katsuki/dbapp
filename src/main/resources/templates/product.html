@@ -1,55 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Product List</title>-->
-
-<!--    &lt;!&ndash; Bootstrap CSSのリンクを追加 &ndash;&gt;-->
-<!--    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="container">-->
-<!--    <h1 class="mt-5">Product List</h1>-->
-
-<!--    &lt;!&ndash; 新しい製品を追加するフォーム &ndash;&gt;-->
-<!--    <form action="/addProduct" method="post">-->
-<!--        <div class="form-group">-->
-<!--            <label for="productName">Product Name:</label>-->
-<!--            <input type="text" class="form-control" id="productName" name="productName" required>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--            <label for="productCount">Product Count:</label>-->
-<!--            <input type="number" class="form-control" id="productCount" name="productCount" required>-->
-<!--        </div>-->
-<!--        <button type="submit" class="btn btn-success">Add Product</button>-->
-<!--    </form>-->
-
-<!--    <table class="table table-striped mt-3">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>ID</th>-->
-<!--            <th>Name</th>-->
-<!--            <th>Count</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        &lt;!&ndash; products リストの各要素を反復処理 &ndash;&gt;-->
-<!--        <tr th:each="product : ${products}">-->
-<!--            <td th:text="${product.id}"></td>-->
-<!--            <td th:text="${product.name}"></td>-->
-<!--            <td th:text="${product.count}"></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
-<!--<div class="container">-->
-<!--    <a href="/index" class="btn btn-primary mt-3">index</a>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
@@ -91,12 +39,12 @@
             <!-- 新しい製品を追加するフォーム -->
             <form action="/addProduct" method="post">
                 <div class="form-group">
-                    <label for="productName">Product Name:</label>
-                    <input type="text" class="form-control" id="productName" name="productName" required>
+                    <label for="name">Product Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="productCount">Product Count:</label>
-                    <input type="number" class="form-control" id="productCount" name="productCount" required>
+                    <label for="count">Product Count:</label>
+                    <input type="number" class="form-control" id="count" name="count" required>
                 </div>
                 <button type="submit" class="btn btn-success">Add Product</button>
             </form>
