@@ -8,16 +8,17 @@ import com.example.dbapp.mapper.*;
 
 @org.springframework.web.bind.annotation.RestController
 @MapperScan(basePackages = {"com.example.dbapp"})
-public class RestController {
+public class HomeController {
     int a = 0;
 
     @Autowired
     ProductMapper productMapper;
 
     @RequestMapping("/")
-    public String test(){
+    public ModelAndView home(){
         System.out.println("test");
-        return "test2";
+        ModelAndView model = new ModelAndView("home");
+        return model;
     }
 
     @GetMapping(value = {"/index", ""})

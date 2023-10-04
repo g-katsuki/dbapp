@@ -20,8 +20,17 @@ public class ProductController {
     @Autowired
     ProductMapper productMapper;
 
+    @RequestMapping("/list")
+    public ModelAndView list() {
+        ProductExample ex = null;
+        List<Product> products = productMapper.selectByExample(ex);
+        ModelAndView model = new ModelAndView("/product/list");
+        model.addObject("products", products);
+        return model;
+    }
+
     @RequestMapping("/register")
-    public ModelAndView product() {
+    public ModelAndView register() {
         ProductExample ex = null;
         List<Product> products = productMapper.selectByExample(ex);
         ModelAndView model = new ModelAndView("/product/register");
