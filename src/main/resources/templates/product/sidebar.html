@@ -1,0 +1,31 @@
+<!-- sidebar.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <!-- Bootstrap CSSのリンクを追加 -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:fragment="sidebar" xmlns:th="http://www.w3.org/1999/xhtml">
+    <nav class="col-md-1 bg-light">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="/productList">一覧</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/addProduct">登録</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/searchProduct">検索</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/deleteProduct">削除</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>
