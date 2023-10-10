@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.dbapp.mapper.*;
 
 @org.springframework.web.bind.annotation.RestController
-@MapperScan(basePackages = {"com.example.dbapp"})
+//@MapperScan(basePackages = {"com.example.dbapp"})
 public class HomeController {
     int a = 0;
 
