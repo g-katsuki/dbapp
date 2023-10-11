@@ -4,10 +4,10 @@ import com.example.dbapp.service.AbstructCreateService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl extends AbstructCreateService implements ProductService {
     @Override
-    public void product(){
+    public void createProduct(){
         System.out.println("create");
-//        doCommonLogic();
+        doCommonLogic();
     }
 }

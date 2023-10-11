@@ -33,12 +33,7 @@ public class ProductController {
 
     @RequestMapping("/list")
     public ModelAndView list() {
-        System.out.println("before");
-//        createProductService1.createProduct();  // インターフェイス経由できてない
-//        CreateProductService createProductService = null;
-//        createProductService.createProduct();
-        productDelegator.createProductD();
-        System.out.println("after");
+        productDelegator.createProductDelegator();
         ProductExample ex = null;
         List<Product> products = productMapper.selectByExample(ex);
         ModelAndView model = new ModelAndView("/product/list");
@@ -69,7 +64,6 @@ public class ProductController {
     @RequestMapping("/test")
     public void test(){
         ProductService createProductService = null;
-        createProductService.product();
     }
 
 }
