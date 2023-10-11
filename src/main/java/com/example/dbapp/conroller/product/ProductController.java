@@ -5,8 +5,6 @@ import com.example.dbapp.mapper.ProductMapper;
 import com.example.dbapp.model.Product;
 import com.example.dbapp.model.ProductExample;
 import com.example.dbapp.service.product.ProductService;
-import com.example.dbapp.service.product.ProductServiceImpl;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,16 +24,11 @@ public class ProductController {
     ProductMapper productMapper;
 
     @Autowired
-    ProductService productService;
-
-    @Autowired
     ProductDelegator productDelegator;
 
     @RequestMapping("/list")
     public ModelAndView list() {
-        productDelegator.createProductDelegator();
-        ProductExample ex = null;
-        List<Product> products = productMapper.selectByExample(ex);
+        List<Product> products = productDelegator.createProductDelegator();
         ModelAndView model = new ModelAndView("/product/list");
         model.addObject("products", products);
         return model;

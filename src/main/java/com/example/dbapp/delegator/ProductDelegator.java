@@ -1,9 +1,13 @@
 package com.example.dbapp.delegator;
 
+import com.example.dbapp.model.Product;
 import com.example.dbapp.service.merchant.MerhantService;
 import com.example.dbapp.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ProductDelegator {
@@ -13,11 +17,11 @@ public class ProductDelegator {
     @Autowired
     MerhantService merhantService;
 
-    public void createProductDelegator() {
-
+    public List<Product> createProductDelegator() {
+        List<Product> products = new ArrayList<>();
         System.out.println("delegator");
-        productService.createProduct();
+        products = productService.createProduct();
         merhantService.output();
-
+        return products;
     }
 }

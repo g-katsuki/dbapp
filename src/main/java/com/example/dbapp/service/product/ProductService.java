@@ -1,5 +1,9 @@
 package com.example.dbapp.service.product;
 
+import com.example.dbapp.model.Product;
+
+import java.util.List;
+
 public interface ProductService {
-    void createProduct();
+    List<Product> createProduct();
 }
