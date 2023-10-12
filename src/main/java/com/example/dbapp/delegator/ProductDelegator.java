@@ -19,9 +19,11 @@ public class ProductDelegator {
 
     public List<Product> createProductDelegator() {
         List<Product> products = new ArrayList<>();
-        System.out.println("delegator");
         products = productService.createProduct();
-        merhantService.output();
         return products;
+    }
+
+    public void deleteProductDelegator(int id) {
+        productService.deleteProduct(id);
     }
 }

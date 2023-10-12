@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register Product</title>
+    <title>Delete Product</title>
 
     <!-- Bootstrap CSSのリンクを追加 -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -34,19 +34,15 @@
 
         <!-- コンテンツ -->
         <div class="col-md-9">
-            <h1 class="mt-5">Register Product</h1>
+            <h1 class="mt-5">Delete Product</h1>
 
             <!-- 新しい製品を追加するフォーム -->
-            <form action="/product/addProduct" method="post">
+            <form action="/product/deleteProduct" method="post">
                 <div class="form-group">
-                    <label for="name">Product Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
+                    <label for="id">Product Name:</label>
+                    <input type="number" class="form-control" id="id" name="id" required>
                 </div>
-                <div class="form-group">
-                    <label for="count">Product Count:</label>
-                    <input type="number" class="form-control" id="count" name="count" required>
-                </div>
-                <button type="submit" class="btn btn-success">Add Product</button>
+                <button type="submit" class="btn btn-success">delete Product</button>
             </form>
 
             <table class="table table-striped mt-3">

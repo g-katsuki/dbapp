@@ -22,4 +22,11 @@ public class ProductServiceImpl extends AbstructCreateService implements Product
         doCommonLogic();
         return products;
     }
+
+    @Override
+    public void deleteProduct(int id) {
+        ProductExample ex = new ProductExample();
+        ex.createCriteria().andIdEqualTo(id);
+        int i = productMapper.deleteByExample(ex);
+    }
 }

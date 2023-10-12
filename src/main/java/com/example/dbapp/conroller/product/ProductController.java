@@ -8,6 +8,7 @@ import com.example.dbapp.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,7 +45,7 @@ public class ProductController {
     }
 
     // 登録後リダイレクトしたいのでRequestMappingにする必要があったPostでもできるかはわからない
-    @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
+    @PostMapping(value = "/addProduct")
     public ModelAndView addProduct(@ModelAttribute Product product) {
         Product tmp_product = new Product();
         tmp_product.setName(product.getName());
@@ -53,10 +54,20 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("redirect:/product/register");
         return modelAndView;
     }
-    
-    @RequestMapping("/test")
-    public void test(){
-        ProductService createProductService = null;
+
+    @RequestMapping("/delete")
+    public ModelAndView delete() {
+        List<Product> products = productDelegator.createProductDelegator();
+        ModelAndView model = new ModelAndView("/product/delete");
+        model.addObject("products", products);
+        return model;
+    }
+
+    @PostMapping(value = "/deleteProduct")
+    public ModelAndView deleteProduct(@ModelAttribute Product product) {
+        productDelegator.deleteProductDelegator(product.getId());
+        ModelAndView modelAndView = new ModelAndView("redirect:/product/delete");
+        return modelAndView;
     }
 
 }
