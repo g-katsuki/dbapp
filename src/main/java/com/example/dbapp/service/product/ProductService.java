@@ -1,6 +1,6 @@
 package com.example.dbapp.service.product;
 
-import com.example.dbapp.model.Product;
+import com.example.dbapp.common.dto.base.Product;
 
 import java.util.List;
 

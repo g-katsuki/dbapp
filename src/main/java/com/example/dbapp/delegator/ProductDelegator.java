@@ -1,6 +1,6 @@
 package com.example.dbapp.delegator;
 
-import com.example.dbapp.model.Product;
+import com.example.dbapp.common.dto.base.Product;
 import com.example.dbapp.service.merchant.MerhantService;
 import com.example.dbapp.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;

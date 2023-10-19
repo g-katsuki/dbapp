@@ -1,13 +1,12 @@
-package com.example.dbapp.mapper;
+package com.example.dbapp.common.dao.base;
 
-import com.example.dbapp.model.Product;
-import com.example.dbapp.model.ProductExample;
+import com.example.dbapp.common.dto.base.Product;
+import com.example.dbapp.common.dto.base.ProductExample;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
-import org.springframework.stereotype.Repository;
 
 @Mapper
 public interface ProductMapper {

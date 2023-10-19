@@ -1,4 +1,4 @@
-package com.example.dbapp.model;
+package com.example.dbapp.common.dto.base;
 
 import java.util.ArrayList;
 import java.util.List;

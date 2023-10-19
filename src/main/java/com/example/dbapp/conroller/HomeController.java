@@ -1,10 +1,9 @@
 package com.example.dbapp.conroller;
 
-import org.mybatis.spring.annotation.MapperScan;
+import com.example.dbapp.common.dao.base.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import com.example.dbapp.mapper.*;
 
 @org.springframework.web.bind.annotation.RestController
 //@MapperScan(basePackages = {"com.example.dbapp"})

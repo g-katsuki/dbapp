@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.dbapp.mapper.ProductMapper">
-  <resultMap id="BaseResultMap" type="com.example.dbapp.model.Product">
+<mapper namespace="com.example.dbapp.common.dao.base.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.example.dbapp.common.dto.base.Product">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -71,7 +71,7 @@
     <!-- @mbg.generated: generated automatically, do not modify! -->
     id, `name`, `count`
   </sql>
-  <select id="selectByExample" parameterType="com.example.dbapp.model.ProductExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.dbapp.common.dto.base.ProductExample" resultMap="BaseResultMap">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     select
     <if test="distinct">
@@ -98,19 +98,19 @@
     delete from product
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.dbapp.model.ProductExample">
+  <delete id="deleteByExample" parameterType="com.example.dbapp.common.dto.base.ProductExample">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     delete from product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.dbapp.model.Product" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.dbapp.common.dto.base.Product" useGeneratedKeys="true">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     insert into product (`name`, `count`)
     values (#{name,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.dbapp.model.Product" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.dbapp.common.dto.base.Product" useGeneratedKeys="true">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     insert into product
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -130,7 +130,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.dbapp.model.ProductExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.example.dbapp.common.dto.base.ProductExample" resultType="java.lang.Long">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     select count(*) from product
     <if test="_parameter != null">
@@ -165,7 +165,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.dbapp.model.Product">
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.dbapp.common.dto.base.Product">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     update product
     <set>
@@ -178,7 +178,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.dbapp.model.Product">
+  <update id="updateByPrimaryKey" parameterType="com.example.dbapp.common.dto.base.Product">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     update product
     set `name` = #{name,jdbcType=VARCHAR},
