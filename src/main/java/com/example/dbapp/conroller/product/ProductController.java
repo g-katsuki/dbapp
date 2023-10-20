@@ -1,5 +1,8 @@
 package com.example.dbapp.conroller.product;
 
+import com.example.dbapp.common.dao.base.UserMapper;
+import com.example.dbapp.common.dto.base.User;
+import com.example.dbapp.common.dto.base.UserExample;
 import com.example.dbapp.delegator.ProductDelegator;
 import com.example.dbapp.common.dao.base.ProductMapper;
 import com.example.dbapp.common.dto.base.Product;
@@ -23,11 +26,18 @@ public class ProductController {
     ProductMapper productMapper;
 
     @Autowired
+    UserMapper userMapper;
+
+    @Autowired
     ProductDelegator productDelegator;
 
     @RequestMapping("/list")
     public ModelAndView list() {
         List<Product> products = productDelegator.createProductDelegator();
+        UserExample ex = null;
+        List<User> user = userMapper.selectByExample(ex);
+        String name = user.get(0).getName();
+        System.out.println(name);
         ModelAndView model = new ModelAndView("/product/list");
         model.addObject("products", products);
         return model;
