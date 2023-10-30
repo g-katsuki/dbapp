@@ -1,10 +1,108 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>User's Products</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<h2>Products owned by the user</h2>-->
+
+<!--<table>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Product ID</th>-->
+<!--        <th>Product Name</th>-->
+<!--        &lt;!&ndash; 他の商品の属性もここに追加できます &ndash;&gt;-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="product : ${products}">-->
+<!--        <td th:text="${product.productId}"></td>-->
+<!--        <td th:text="${product.productName}"></td>-->
+<!--        &lt;!&ndash; 他の商品の属性もここに追加できます &ndash;&gt;-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Inventory List</title>
+
+    <!-- Bootstrap CSSのリンクを追加 -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="container-fluid">
+    <div class="row">
+        <!-- サイドバー -->
+        <nav class="col-md-1 bg-light">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">ホーム</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/product/list">一覧</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/register">登録</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/search">検索</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/delete">削除</a>
+                </li>
+            </ul>
+        </nav>
 
+        <!-- 間隔を追加 -->
+        <div class="col-md-1"></div>
+
+        <!-- コンテンツ -->
+        <div class="col-md-9">
+            <h1 class="mt-5">Inventory List</h1>
+
+            <form action="/user/selectUser" method="get">
+                <div class="form-group">
+                    <label for="id">User Id:</label>
+                    <input type="number" class="form-control" id="id" name="userId" required>
+                </div>
+                <button type="submit" class="btn btn-success">Select User</button>
+            </form>
+
+            <table class="table table-striped mt-3">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Count</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- products リストの各要素を反復処理 -->
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.id}"></td>
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.count}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>
