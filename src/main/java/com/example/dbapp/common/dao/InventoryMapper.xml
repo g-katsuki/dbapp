@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dbapp.common.dao.InventoryMapper">
+
+    <select id="findByUserId" resultType="com.example.dbapp.common.dto.base.Product">
+        SELECT p.*
+        FROM product p
+        INNER JOIN user_product_mapping up ON p.id = up.product_id
+        WHERE up.user_id = #{userId}
+    </select>
+</mapper>
