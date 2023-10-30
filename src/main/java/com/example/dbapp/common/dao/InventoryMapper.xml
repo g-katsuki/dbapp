@@ -6,7 +6,7 @@
     <select id="findByUserId" resultType="com.example.dbapp.common.dto.base.Product">
         SELECT p.*
         FROM product p
-        INNER JOIN user_product_mapping up ON p.id = up.product_id
-        WHERE up.user_id = #{userId}
+        INNER JOIN user_product_mapping upm ON p.id = upm.product_id
+        WHERE upm.user_id = #{userId}
     </select>
 </mapper>
