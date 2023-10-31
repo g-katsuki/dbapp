@@ -2,6 +2,7 @@ package com.example.dbapp.conroller.user;
 
 import com.example.dbapp.common.dao.InventoryMapper;
 import com.example.dbapp.common.dto.base.Product;
+import com.example.dbapp.delegator.UserDelegator;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
@@ -18,12 +19,14 @@ public class UserController {
 
     @Autowired
     InventoryMapper inventoryMapper;
+    @Autowired
+    UserDelegator userDelegator;
 
     Integer userId = 0;
 
     @RequestMapping("/inventory")
     public ModelAndView inventory(){
-        List<Product> products = inventoryMapper.findByUserId(userId);
+        List<Product> products = userDelegator.getInventoryDelegator(userId);
         for(int i=0; i<products.size(); i++){
             System.out.println(products.get(i).getName());
         }

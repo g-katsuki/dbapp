@@ -11,17 +11,11 @@ import java.util.List;
 
 @Service
 public class ProductDelegator {
+
     @Autowired
     ProductService productService;
 
-    @Autowired
-    MerhantService merhantService;
-
-    public List<Product> createProductDelegator() {
-        List<Product> products = new ArrayList<>();
-        products = productService.createProduct();
-        return products;
-    }
+    public List<Product> createProductDelegator() { return productService.createProduct(); }
 
     public void deleteProductDelegator(int id) {
         productService.deleteProduct(id);
