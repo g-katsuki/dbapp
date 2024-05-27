@@ -1,4 +1,4 @@
---CREATE DATABASE dbappDB;
+--CREATE DATABASE dbappDB; (これは最初だけ行うから本来ならif分岐で存在チェックしてスキップできるといいかも)
 USE dbappDB;
 
 CREATE TABLE product (
