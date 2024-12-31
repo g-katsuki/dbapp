@@ -1,3 +1,6 @@
+# Endpoint
+http://localhost:8084/
+
 # Database Setup Instructions
 
 To set up the necessary database tables for this application, follow the steps below.
