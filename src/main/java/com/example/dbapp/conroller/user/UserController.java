@@ -1,7 +1,11 @@
 package com.example.dbapp.conroller.user;
 
 import com.example.dbapp.common.dao.InventoryMapper;
+import com.example.dbapp.common.dao.base.UserProductMappingMapper;
 import com.example.dbapp.common.dto.base.Product;
+import com.example.dbapp.common.dto.base.ProductExample;
+import com.example.dbapp.common.dto.base.UserProductMapping;
+import com.example.dbapp.common.dto.base.UserProductMappingExample;
 import com.example.dbapp.delegator.UserDelegator;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +22,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    InventoryMapper inventoryMapper;
+    UserProductMappingMapper userProductMappingMapper;
     @Autowired
     UserDelegator userDelegator;
 
@@ -40,5 +44,24 @@ public class UserController {
         this.userId=userId;
         ModelAndView model = inventory();
         return model;
+    }
+
+    @RequestMapping("/register")
+    public ModelAndView register() {
+        UserProductMappingExample ex = null;
+        List<UserProductMapping> userProductMappings = userProductMappingMapper.selectByExample(ex);
+        ModelAndView model = new ModelAndView("/user/register");
+        model.addObject("userProductMappings", userProductMappings);
+        return model;
+    }
+
+    @PostMapping(value = "/addProduct")
+    public ModelAndView addProduct(@ModelAttribute UserProductMapping userProductMapping) {
+        UserProductMapping tmp_userProductMapping = new UserProductMapping();
+        tmp_userProductMapping.setUserId(userProductMapping.getUserId());
+        tmp_userProductMapping.setProductId(userProductMapping.getProductId());
+        int i = userProductMappingMapper.insert(tmp_userProductMapping);
+        ModelAndView modelAndView = new ModelAndView("redirect:/user/register");
+        return modelAndView;
     }
 }

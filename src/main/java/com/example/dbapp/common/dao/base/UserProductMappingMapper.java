@@ -3,11 +3,14 @@ package com.example.dbapp.common.dao.base;
 import com.example.dbapp.common.dto.base.UserProductMapping;
 import com.example.dbapp.common.dto.base.UserProductMappingExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
-import org.springframework.stereotype.Repository;
 
-@Repository
+// ここが元々@RepositoryだったがMyBtisは@Mapperにする。
+// MapperはXMLをインターフェイスにバインドさせる役割がある。
+@Mapper
 public interface UserProductMappingMapper {
     /**
      * @mbg.generated generated automatically, do not modify!
