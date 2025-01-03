@@ -1,5 +1,7 @@
 package com.example.dbapp.common.dto.base;
 
+import java.util.Objects;
+
 /**
  * Table: product
  */
@@ -54,5 +56,18 @@ public class Product {
 
     public void setCount(Integer count) {
         this.count = count;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id) && Objects.equals(name, product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }
