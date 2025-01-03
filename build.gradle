@@ -56,8 +56,7 @@ dependencies {
 	}
 	// Groovyライブラリ
 	implementation 'org.codehaus.groovy:groovy'
-
-	testImplementation 'org.codehaus.groovy:groovy-all:3.0.17' // 必要に応じてGroovyのバージョンを指定
+	testImplementation 'org.codehaus.groovy:groovy-all:3.0.9'// 必要に応じてGroovyのバージョンを指定
 }
 
 tasks.named('test') {

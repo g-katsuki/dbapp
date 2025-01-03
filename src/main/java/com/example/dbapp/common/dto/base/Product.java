@@ -22,6 +22,16 @@ public class Product {
      */
     private Integer count;
 
+    // デフォルトコンストラクタ
+    public Product() {
+    }
+
+    // 引数を受け取るコンストラクタ
+    public Product(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Integer getId() {
         return id;
     }
