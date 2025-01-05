@@ -34,10 +34,10 @@ public class ProductController {
     @RequestMapping("/list")
     public ModelAndView list() {
         List<Product> products = productDelegator.createProductDelegator();
-        UserExample ex = null;
-        List<User> user = userMapper.selectByExample(ex);
-        String name = user.get(0).getName();
-        System.out.println(name);
+//        UserExample ex = null;
+//        List<User> user = userMapper.selectByExample(ex);
+//        String name = user.get(0).getName();
+//        System.out.println(name);
         ModelAndView model = new ModelAndView("/product/list");
         model.addObject("products", products);
         return model;
