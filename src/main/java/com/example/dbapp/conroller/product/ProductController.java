@@ -9,6 +9,7 @@ import com.example.dbapp.common.dto.base.Product;
 import com.example.dbapp.common.dto.base.ProductExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import java.util.List;
 //@MapperScan(basePackages = {"com.example.dbapp.mapper"})
 @RequestMapping("/product")
 @Controller
+@CrossOrigin(origins = "http://localhost:5173") // フロントエンドのURLに応じて変更
 public class ProductController {
 
     @Autowired
@@ -76,6 +78,12 @@ public class ProductController {
         productDelegator.deleteProductDelegator(product.getId());
         ModelAndView modelAndView = new ModelAndView("redirect:/product/delete");
         return modelAndView;
+    }
+
+    @RequestMapping("/listReact")
+    public List<Product> listReact() {
+        List<Product> products = productDelegator.createProductDelegator();
+        return products;
     }
 
 }
